@@ -1,5 +1,6 @@
 package com.springboot.api.controller;
 
+import com.springboot.api.dto.MemberDto;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -78,5 +79,17 @@ public class GetController {
         return sb.toString();
     }
 
+
+
+
+//  DTO 객체를 활용한 GET 메서드 구현
+//  DTO 클래스에는 전달하고자 하는 필드 객체를 선언하고 getter/setter 메서드를 구현합니다.
+//  DTO 클래스에 선언된 필드는 컨트롤러의 메서드에서 쿼리 파라미터의 키와 매핑됩니다.
+//  즉, 쿼리스트링의 키가 정해져 있지만 받아야 할 파라미터가 많을 경우에는 예제 5.9와 같이 DTO 객체를 활용해 코드의 가독성을 높일 수 있습니다.
+//  http://localhost:8080/api/v1/get-api/RequestParam3?name=한정우&email=hotgkswjddn@naver.com&organization=삼성전자
+    @GetMapping(value = "/RequestParam3")
+    public String getRequestParam3(MemberDto memberDto) {
+        return memberDto.toString();
+    }
 
 }
