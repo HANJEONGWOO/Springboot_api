@@ -1,6 +1,8 @@
 package com.springboot.api.controller;
 
 import com.springboot.api.dto.MemberDto;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -57,11 +59,12 @@ public class GetController {
 //        즉, URI에서 '?'를 기준으로, 우측에 '{키}={값}' 형태로 구성된 요청을 전송하는 방법입니다. 애플리케이션에서 이 같은 형식을 처리하려면
 //    @RequestParam을 활용하면 되는데, 예제 5.6과 같이 매개변수 부분에 @RequestParam 어노테이션을 명시해 쿼리 값과 매핑하면 됩니다.
     // http://localhost:8080/api/v1/get-api/RequestParam?name=한정우&email=hotgkswjddn@naver.com&organization=삼성전자
+    @ApiOperation(value = "GET 메소드 예제", notes = "@RequestParam을 활용한 GET Method")
     @GetMapping(value = "/RequestParam")
     public String getRequestParam1(
-            @RequestParam String name,
-            @RequestParam String email,
-            @RequestParam String organization) {
+            @ApiParam(value = "이름", required = true) @RequestParam String name,
+            @ApiParam(value = "이메일", required = true) @RequestParam String email,
+            @ApiParam(value = "회사", required = true) @RequestParam String organization) {
         return "name:"+name+", email:"+email+", organization:"+organization;
     }
 
