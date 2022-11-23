@@ -3,6 +3,8 @@ package com.springboot.api.controller;
 import com.springboot.api.dto.MemberDto;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -12,6 +14,10 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/v1/get-api")
 public class GetController {
+
+    // 예제 5.26
+    private final Logger LOGGER = LoggerFactory.getLogger(GetController.class);
+
     // http://localhost:8080/api/v1/get-api/hello
 
 //    @RequestMapping(value = "/hello", method = RequestMethod.GET)
@@ -24,11 +30,15 @@ public class GetController {
 //    -DeleteMapping
     @GetMapping("/hello")
     public String getHello() {
+        // 예제 5.27
+        LOGGER.info("getHello 메소드가 호출되었습니다.");
         return "Hello World";
     }
 
     @GetMapping("/name")
     public String getName() {
+        // 예제 5.27
+        LOGGER.info("getName 메소드가 호출되었습니다.");
         return "Han Jeongwoo";
     }
 
@@ -39,6 +49,8 @@ public class GetController {
 //    http://localhost:8080/api/v1/get-api/PathVariable/123/456
     @GetMapping(value="/PathVariable/{variable}/{variable1}")
     public String getPathVariable(@PathVariable String variable, @PathVariable String variable1) {
+        // 예제 5.28
+        LOGGER.info("@PathVariable을 통해 들어온 값 : {}, {}", variable, variable1);
         return variable + ", " + variable1;
     }
 
